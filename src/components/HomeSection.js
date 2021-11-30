@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 
-import SideBar from "./SideBar";
-
 const HomeSection = () => {
   const variants = {
     hidden: {
@@ -20,7 +18,6 @@ const HomeSection = () => {
   };
   return (
     <main>
-      <SideBar />
       <motion.section
         id="one"
         className="first"

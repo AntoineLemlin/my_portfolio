@@ -15,7 +15,7 @@ const SideBar = () => {
   };
   const item = {
     hidden: { opacity: 0 },
-    show: (i) => ({ opacity: 1, transition: { delay: 1 * (i / 2) + 3 } }),
+    show: (i) => ({ opacity: 1, transition: { delay: 1 * (i / 2) + 2 } }),
   };
   return (
     <motion.nav
