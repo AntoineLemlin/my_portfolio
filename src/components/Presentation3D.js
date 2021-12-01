@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader.js";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -8,8 +7,46 @@ const Presentation3D = () => {
     // Canvas
     const canvas = document.querySelector("canvas.webgl");
 
+    const textureLoader = new THREE.TextureLoader();
+
     // Scene
     const scene = new THREE.Scene();
+
+      //Controls
+      const mouseMove = {
+        x: 0,
+    }
+      window.addEventListener('mousemove', (event) => {
+        mouseMove.x = ( event.clientX / window.innerWidth ) * 3 - 1;
+      })
+
+    for(let j = 0; j<=6; j++){
+      const vertices = [];
+
+      for ( let i = 0; i < 15; i ++ ) {
+      
+        const x = THREE.MathUtils.randFloatSpread( 20 );
+        const y = THREE.MathUtils.randFloatSpread( 20 );
+        const z = THREE.MathUtils.randFloatSpread( 20 );
+    
+        vertices.push( x, y, z );
+        
+      }
+        const geometry = new THREE.SphereBufferGeometry(4,3,2);
+        geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+        
+        const reactTexture = textureLoader.load(`./textures/techno${j}.png`)
+        
+        const material = new THREE.PointsMaterial( { map: reactTexture, size: 2, transparent: false, alphaTest: 0.5 } );
+        
+      
+      
+      const points = new THREE.Points( geometry, material );
+      
+      scene.add( points );
+      
+      points.position.z = 65
+      points.position.x = -25
 
     /**
      * Sizes
@@ -27,10 +64,15 @@ const Presentation3D = () => {
       // Update camera
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        camera.position.x = 13;
+      if (window.matchMedia("(max-width: 1024px)").matches) {
+        camera.position.x = -25;
+        camera.position.z = 75
+        material.size = 0.75
       } else {
         camera.position.x = 0;
+        camera.position.z = 100
+        material.size = 2
+
       }
 
       // Update renderer
@@ -51,10 +93,13 @@ const Presentation3D = () => {
     camera.position.x = 0;
     camera.position.y = 0;
     camera.position.z = 100;
+  
     scene.add(camera);
 
-    if (window.matchMedia("(max-width: 768px)").matches) {
-      camera.position.x = -4;
+    if (window.matchMedia("(max-width: 1024px)").matches) {
+      camera.position.x = -25;
+      camera.position.z = 75
+      material.size = 0.75
     }
 
     /**
@@ -70,54 +115,19 @@ const Presentation3D = () => {
     renderer.autoClear = false;
     renderer.setClearColor(0x000000, 0.0);
 
-    //Controls
+  
 
-    // const controls = new OrbitControls(camera, renderer.domElement);
 
-    //Textures
+  const tick = () => {
+    requestAnimationFrame(tick);
+    points.rotation.y = mouseMove.x;
+    renderer.render(scene, camera);
+  };
+  tick();
 
-    const textureLoader = new THREE.TextureLoader();
+}
 
-    const deckTexture = textureLoader.load(
-      "./textures/internal_ground_ao_texture.jpg"
-    );
-
-    const deckMap = new THREE.MeshStandardMaterial({ color: 0x61dbfb });
-
-    // Import Obj
-
-    const loader = new OBJLoader();
-    loader.load("./models/react.obj", function (object) {
-      object.traverse(function (child) {
-        if (child instanceof THREE.Mesh) {
-          child.material = deckMap;
-        }
-      });
-      scene.add(object);
-
-      object.position.z = 94;
-      object.position.x = -4;
-
-      object.rotation.z = 0;
-      object.rotation.y = 6;
-
-      const clock = new THREE.Clock();
-
-      const tick = () => {
-        requestAnimationFrame(tick);
-        const elapsedTime = clock.getElapsedTime();
-
-        object.rotation.y = (elapsedTime * Math.PI) / 10;
-        object.rotation.x = (elapsedTime * Math.PI) / 10;
-
-        // Render
-        renderer.render(scene, camera);
-
-        // Call tick again on the next frame
-      };
-
-      tick();
-    });
+    
 
     // Geometry
 
@@ -130,6 +140,9 @@ const Presentation3D = () => {
 
     const ambientLight = new THREE.AmbientLight(0x404040, 1);
     scene.add(pointLightDeck, ambientLight);
+
+    
+    
   });
   return (
     <motion.canvas

@@ -27,7 +27,7 @@ const DeckOfCards = () => {
       // Update camera
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
-      if (window.matchMedia("(max-width: 768px)").matches) {
+      if (window.matchMedia("(max-width: 1024px)").matches) {
         camera.position.x = 13;
       } else {
         camera.position.x = 0;
@@ -53,7 +53,7 @@ const DeckOfCards = () => {
     camera.position.z = 100;
     scene.add(camera);
 
-    if (window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia("(max-width: 1024px)").matches) {
       camera.position.x = 13;
     }
 
@@ -118,7 +118,6 @@ const DeckOfCards = () => {
       tick();
     });
 
-    // Geometry
 
     //Lights
 

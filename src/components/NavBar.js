@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation().pathname;
+  console.log(location)
   const variants = {
     hidden: {
       opacity: 0,
@@ -22,17 +24,20 @@ const NavBar = () => {
     <header>
       <motion.ul variants={variants} initial="hidden" animate="show">
         <motion.li variants={item} initial="hidden" animate="show" custom={1}>
-          <Link className="btn-nav" to="/">
+          <Link className={location === "/" ? "disabled-link btn-nav" : "btn-nav"} to="/" >
             Accueil
           </Link>
         </motion.li>
         <motion.li variants={item} initial="hidden" animate="show" custom={2}>
-          <Link className="btn-nav" to="/presentation">
+          <Link className={location === "/presentation" ? "disabled-link btn-nav" : "btn-nav"} to="/presentation">
             Qui suis-je?
           </Link>
         </motion.li>
         <motion.li variants={item} initial="hidden" animate="show" custom={3}>
+        <Link className={location === "/projets" ? "disabled-link btn-nav" : "btn-nav"} to="/projets">
           Projets
+          </Link>
+
         </motion.li>
         <motion.li
           variants={item}

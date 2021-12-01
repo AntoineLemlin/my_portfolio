@@ -25,13 +25,19 @@ const PresentationSection = () => {
         animate="show"
       >
         <div className="text">
-          <motion.h1 custom={1} variants={item}>
+          <motion.h2 custom={1} variants={item}>
             Qui suis-je?
-          </motion.h1>
+          </motion.h2>
           <motion.p custom={2} variants={item}>
             Je m'appelle Antoine Lemlin, j'ai 23 ans et je suis développeur web
-            frontend Junior
+            frontend Junior en Belgique.
           </motion.p>
+          <motion.ul className="list-techno" custom={3} variants={item}>
+            <li>Javascript</li>
+            <li>React.JS</li>
+            <li>Three.JS</li>
+            <li>PHP</li>
+          </motion.ul>
         </div>
       </motion.section>
     </main>

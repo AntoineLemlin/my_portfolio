@@ -1,4 +1,5 @@
 import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
   BrowserRouter,
   Routes,
@@ -12,38 +13,45 @@ import NavBar from "./components/NavBar";
 import SideBar from "./components/SideBar";
 import HomePage from "./screens/HomePage";
 import Presentation from "./screens/Presentation";
+import Projets from "./screens/Projets";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  let canScroll = true;
+  let [canScroll, setScroll] = useState(true);
 
-  window.addEventListener("wheel", (e) => {
+  useEffect(() => {
     if (canScroll) {
-      canScroll = false;
-      if (e.deltaY > 0) {
-        switch (location.pathname) {
-          case "/":
-            navigate("/presentation");
-            break;
-        }
-      }
-      if (e.deltaY < 0) {
-        if (location.pathname !== "/") {
+    document.addEventListener("wheel", (e) => {
+      setScroll(false);
+        if (e.deltaY > 0) {
           switch (location.pathname) {
-            case "/presentation":
-              navigate("/");
+            case "/":
+              navigate("/presentation");
               break;
-            default:
-              return;
+              case "/presentation":
+              navigate("/projets");
+              break;
           }
         }
-      }
-      setTimeout(() => {
-        canScroll = true;
-      }, 2000);
+        if (e.deltaY < 0) {
+          if (location.pathname !== "/") {
+            switch (location.pathname) {
+              case "/projets":
+                navigate("/presentation");
+                break;
+              case "/presentation":
+                navigate("/");
+                break;
+            }
+          }
+        }
+        setTimeout(() => {
+          setScroll(true);
+        }, 100);
+      }, true);
     }
-  });
+  })
 
   return (
     <>
@@ -54,6 +62,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
           <Route path="/presentation" element={<Presentation />} />
+          <Route path="/projets" element={<Projets />} />
         </Routes>
       </AnimatePresence>
     </>
