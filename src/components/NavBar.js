@@ -46,7 +46,9 @@ const NavBar = () => {
           custom={4}
           id="contact"
         >
+       <Link className={location === "/contact" ? "disabled-link btn-nav" : "btn-nav-contact"} to="/contact">
           Contact
+        </Link>
         </motion.li>
       </motion.ul>
     </header>
