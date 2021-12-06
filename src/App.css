@@ -255,6 +255,13 @@ ul li,
   font-size: 20px;
   color: black;
 }
+
+.scroll{
+  color: #f6e091;
+  margin: auto;
+  text-align: center;
+  margin-top: -1% ;
+}
 @media screen and (max-width: 1150px) {
   .second h2{
     font-size: 75px;
@@ -303,6 +310,17 @@ ul li,
     list-style: none;
     margin-top: 30px;
     margin-right: unset;
+  }
+
+  .contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .first, .fourth{
+    margin: auto;
+
   }
 }
 
@@ -375,6 +393,10 @@ transform: translateX(-50%);
     height: 100px;
     width: auto;
     top: unset;
+  }
+
+  .scroll{
+    display: none;
   }
 }
 

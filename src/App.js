@@ -15,15 +15,62 @@ import HomePage from "./screens/HomePage";
 import Presentation from "./screens/Presentation";
 import Projets from "./screens/Projets";
 import ContactPage from "./screens/ContactPage";
+import Scroll from "./components/Scroll";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   let [canScroll, setScroll] = useState(true);
-
+  
   useEffect(() => {
+    
+    var touchstartX = 0;
+    var touchstartY = 0;
+    var touchendX = 0;
+    var touchendY = 0;
     if (canScroll) {
-    document.addEventListener("wheel", (e) => {
+    
+document.addEventListener('touchstart', function(e) {
+    touchstartX = e.changedTouches[0].screenX;
+    touchstartY = e.changedTouches[0].screenY;
+}, false);
+
+document.addEventListener('touchend', function(e) {
+    touchendX = e.changedTouches[0].screenX;
+    touchendY = e.changedTouches[0].screenY;
+    handleGesure();
+}, false); 
+
+function handleGesure() {
+    if (touchendY < touchstartY) {
+      switch (location.pathname) {
+        case "/":
+          navigate("/presentation");
+          break;
+          case "/presentation":
+          navigate("/projets");
+          break;
+          case "/projets":
+          navigate("/contact");
+          break;
+      }
+    }
+    if (touchendY > touchstartY) {
+      switch (location.pathname) {
+        case "/contact":
+          navigate("/projets");
+          break;
+        case "/projets":
+          navigate("/presentation");
+          break;
+        case "/presentation":
+          navigate("/");
+          break;
+      }
+    }
+}
+
+    document.addEventListener('mousewheel', (e) => {
       setScroll(false);
         if (e.deltaY > 0) {
           switch (location.pathname) {
@@ -58,6 +105,8 @@ function App() {
         }, 100);
       }, true);
     }
+
+    
   })
 
   return (
@@ -73,6 +122,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </AnimatePresence>
+
+      {location.pathname === "/contact" ? "" : <Scroll />}
     </>
   );
 }
