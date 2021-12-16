@@ -54,7 +54,7 @@ const ProjetSection = () => {
                   <img
                     className="img-card"
                     src="./captures/netflix.JPG"
-                    alt="Avatar"
+                    alt="Netflix Clone"
                   />
                 </div>
                 <div class="flip-card-back">
@@ -85,7 +85,7 @@ const ProjetSection = () => {
                   <img
                     className="img-card"
                     src="./captures/mcdonald.JPG"
-                    alt="Avatar"
+                    alt="McDonald's App"
                   />
                 </div>
                 <div class="flip-card-back">
@@ -116,7 +116,7 @@ const ProjetSection = () => {
                   <img
                     className="img-card"
                     src="./captures/spacetimer.JPG"
-                    alt="Avatar"
+                    alt="SpaceTimer"
                   />
                 </div>
                 <div class="flip-card-back">
@@ -147,7 +147,7 @@ const ProjetSection = () => {
                   <img
                     className="img-card"
                     src="./captures/forum.JPG"
-                    alt="Avatar"
+                    alt="Forum"
                   />
                 </div>
                 <div class="flip-card-back">
@@ -178,7 +178,7 @@ const ProjetSection = () => {
                   <img
                     className="img-card"
                     src="./captures/rpg.JPG"
-                    alt="Avatar"
+                    alt="RPG Game"
                   />
                 </div>
                 <div class="flip-card-back">
