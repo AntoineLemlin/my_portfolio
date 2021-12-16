@@ -30,7 +30,7 @@ const PresentationSection = () => {
           </motion.h2>
           <motion.p custom={2} variants={item}>
             My name is Antoine Lemlin and I'm a Junior Web Developper from
-            Belgium. Check below the technologies I know.
+            Belgium. Check below some of the technologies I know.
           </motion.p>
           <motion.ul className="list-techno" custom={3} variants={item}>
             <li>Javascript</li>
