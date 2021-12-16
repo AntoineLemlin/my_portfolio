@@ -28,7 +28,7 @@ const NavBar = () => {
             className={location === "/" ? "disabled-link btn-nav" : "btn-nav"}
             to="/"
           >
-            Accueil
+            Home
           </Link>
         </motion.li>
         <motion.li variants={item} initial="hidden" animate="show" custom={2}>
@@ -38,7 +38,7 @@ const NavBar = () => {
             }
             to="/presentation"
           >
-            Qui suis-je?
+            Who am I?
           </Link>
         </motion.li>
         <motion.li
@@ -56,7 +56,7 @@ const NavBar = () => {
             }
             to="/projets"
           >
-            Projets
+            Projects
           </Link>
         </motion.li>
       </motion.ul>
