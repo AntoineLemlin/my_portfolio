@@ -115,7 +115,7 @@ function App() {
           }
           setTimeout(() => {
             setScroll(true);
-          }, 100);
+          }, 300);
         },
         true
       );
