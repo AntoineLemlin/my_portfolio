@@ -26,7 +26,7 @@ const SideBar = () => {
     >
       <motion.a
         className="active"
-        href="#home"
+        href="https://github.com/AntoineLemlin/"
         variants={item}
         initial="hidden"
         animate="show"
@@ -35,7 +35,7 @@ const SideBar = () => {
         <i className="fab fa-github"></i>
       </motion.a>
       <motion.a
-        href="#news"
+        href="https://www.linkedin.com/in/antoine-lemlin/"
         variants={item}
         initial="hidden"
         animate="show"
@@ -44,7 +44,7 @@ const SideBar = () => {
         <i className="fab fa-linkedin-in"></i>
       </motion.a>
       <motion.a
-        href="#contact"
+        href="mailto:ant.lemlin@gmail.com"
         variants={item}
         initial="hidden"
         animate="show"

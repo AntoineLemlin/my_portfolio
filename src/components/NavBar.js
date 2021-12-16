@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation().pathname;
-  console.log(location)
+  console.log(location);
   const variants = {
     hidden: {
       opacity: 0,
@@ -24,20 +24,22 @@ const NavBar = () => {
     <header>
       <motion.ul variants={variants} initial="hidden" animate="show">
         <motion.li variants={item} initial="hidden" animate="show" custom={1}>
-          <Link className={location === "/" ? "disabled-link btn-nav" : "btn-nav"} to="/" >
+          <Link
+            className={location === "/" ? "disabled-link btn-nav" : "btn-nav"}
+            to="/"
+          >
             Accueil
           </Link>
         </motion.li>
         <motion.li variants={item} initial="hidden" animate="show" custom={2}>
-          <Link className={location === "/presentation" ? "disabled-link btn-nav" : "btn-nav"} to="/presentation">
+          <Link
+            className={
+              location === "/presentation" ? "disabled-link btn-nav" : "btn-nav"
+            }
+            to="/presentation"
+          >
             Qui suis-je?
           </Link>
-        </motion.li>
-        <motion.li variants={item} initial="hidden" animate="show" custom={3}>
-        <Link className={location === "/projets" ? "disabled-link btn-nav" : "btn-nav"} to="/projets">
-          Projets
-          </Link>
-
         </motion.li>
         <motion.li
           variants={item}
@@ -46,9 +48,16 @@ const NavBar = () => {
           custom={4}
           id="contact"
         >
-       <Link className={location === "/contact" ? "disabled-link btn-nav" : "btn-nav-contact"} to="/contact">
-          Contact
-        </Link>
+          <Link
+            className={
+              location === "/projets"
+                ? "disabled-link btn-nav"
+                : "btn-nav-contact"
+            }
+            to="/projets"
+          >
+            Projets
+          </Link>
         </motion.li>
       </motion.ul>
     </header>

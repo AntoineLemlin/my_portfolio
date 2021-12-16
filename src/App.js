@@ -14,7 +14,6 @@ import SideBar from "./components/SideBar";
 import HomePage from "./screens/HomePage";
 import Presentation from "./screens/Presentation";
 import Projets from "./screens/Projets";
-import ContactPage from "./screens/ContactPage";
 import Scroll from "./components/Scroll";
 
 function App() {
@@ -69,16 +68,10 @@ function App() {
                 case "/presentation":
                   navigate("/projets");
                   break;
-                case "/projets":
-                  navigate("/contact");
-                  break;
               }
             }
             if (touchendY > touchstartY) {
               switch (location.pathname) {
-                case "/contact":
-                  navigate("/projets");
-                  break;
                 case "/projets":
                   navigate("/presentation");
                   break;
@@ -104,16 +97,13 @@ function App() {
                 navigate("/projets");
                 break;
               case "/projets":
-                navigate("/contact");
+                navigate("/");
                 break;
             }
           }
           if (e.deltaY < 0) {
             if (location.pathname !== "/") {
               switch (location.pathname) {
-                case "/contact":
-                  navigate("/projets");
-                  break;
                 case "/projets":
                   navigate("/presentation");
                   break;
@@ -142,7 +132,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="/projets" element={<Projets />} />
-          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </AnimatePresence>
 
