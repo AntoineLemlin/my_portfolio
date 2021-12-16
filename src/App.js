@@ -21,93 +21,116 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   let [canScroll, setScroll] = useState(true);
-  
+
   useEffect(() => {
-    
     var touchstartX = 0;
     var touchstartY = 0;
     var touchendX = 0;
     var touchendY = 0;
+    let touchTime = 0;
+    let diff = 0;
+
     if (canScroll) {
-    
-document.addEventListener('touchstart', function(e) {
-    touchstartX = e.changedTouches[0].screenX;
-    touchstartY = e.changedTouches[0].screenY;
-}, false);
+      document.addEventListener(
+        "touchstart",
+        function (e) {
+          touchstartX = e.changedTouches[0].screenX;
+          touchstartY = e.changedTouches[0].screenY;
+          touchTime = new Date();
+          console.log(touchTime);
+        },
+        false
+      );
 
-document.addEventListener('touchend', function(e) {
-    touchendX = e.changedTouches[0].screenX;
-    touchendY = e.changedTouches[0].screenY;
-    handleGesure();
-}, false); 
+      document.addEventListener(
+        "touchend",
+        function (e) {
+          touchendX = e.changedTouches[0].screenX;
+          touchendY = e.changedTouches[0].screenY;
+          diff = new Date() - touchTime;
+          console.log(diff);
 
-function handleGesure() {
-    if (touchendY < touchstartY) {
-      switch (location.pathname) {
-        case "/":
-          navigate("/presentation");
-          break;
-          case "/presentation":
-          navigate("/projets");
-          break;
-          case "/projets":
-          navigate("/contact");
-          break;
-      }
-    }
-    if (touchendY > touchstartY) {
-      switch (location.pathname) {
-        case "/contact":
-          navigate("/projets");
-          break;
-        case "/projets":
-          navigate("/presentation");
-          break;
-        case "/presentation":
-          navigate("/");
-          break;
-      }
-    }
-}
+          handleGesure();
+        },
+        false
+      );
 
-    document.addEventListener('mousewheel', (e) => {
-      setScroll(false);
-        if (e.deltaY > 0) {
-          switch (location.pathname) {
-            case "/":
-              navigate("/presentation");
-              break;
-              case "/presentation":
-              navigate("/projets");
-              break;
-              case "/projets":
-              navigate("/contact");
-              break;
-          }
-        }
-        if (e.deltaY < 0) {
-          if (location.pathname !== "/") {
-            switch (location.pathname) {
-              case "/contact":
-                navigate("/projets");
-                break;
-              case "/projets":
-                navigate("/presentation");
-                break;
-              case "/presentation":
-                navigate("/");
-                break;
+      function handleGesure() {
+        if (
+          (diff > 120 && touchendY - touchstartY > 150) ||
+          touchendY - touchstartY < -150
+        ) {
+          if (touchstartY !== touchendY) {
+            if (touchendY < touchstartY) {
+              switch (location.pathname) {
+                case "/":
+                  navigate("/presentation");
+                  break;
+                case "/presentation":
+                  navigate("/projets");
+                  break;
+                case "/projets":
+                  navigate("/contact");
+                  break;
+              }
+            }
+            if (touchendY > touchstartY) {
+              switch (location.pathname) {
+                case "/contact":
+                  navigate("/projets");
+                  break;
+                case "/projets":
+                  navigate("/presentation");
+                  break;
+                case "/presentation":
+                  navigate("/");
+                  break;
+              }
             }
           }
         }
-        setTimeout(() => {
-          setScroll(true);
-        }, 100);
-      }, true);
-    }
+      }
 
-    
-  })
+      document.addEventListener(
+        "mousewheel",
+        (e) => {
+          setScroll(false);
+          if (e.deltaY > 0) {
+            switch (location.pathname) {
+              case "/":
+                navigate("/presentation");
+                break;
+              case "/presentation":
+                navigate("/projets");
+                break;
+              case "/projets":
+                navigate("/contact");
+                break;
+            }
+          }
+          if (e.deltaY < 0) {
+            if (location.pathname !== "/") {
+              switch (location.pathname) {
+                case "/contact":
+                  navigate("/projets");
+                  break;
+                case "/projets":
+                  navigate("/presentation");
+                  break;
+                case "/presentation":
+                  navigate("/");
+                  break;
+              }
+            }
+          }
+          setTimeout(() => {
+            setScroll(true);
+          }, 100);
+        },
+        true
+      );
+    }
+  });
 
   return (
     <>
