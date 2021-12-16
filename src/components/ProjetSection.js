@@ -32,7 +32,7 @@ const ProjetSection = () => {
         initial="hidden"
         animate="show"
       >
-        <h2>Mes projets</h2>
+        <h2>My projects</h2>
         <Swiper
           spaceBetween={500}
           slidesPerView={1}

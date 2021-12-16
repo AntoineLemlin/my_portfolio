@@ -26,11 +26,11 @@ const PresentationSection = () => {
       >
         <div className="text">
           <motion.h2 custom={1} variants={item}>
-            Qui suis-je?
+            Who am I?
           </motion.h2>
           <motion.p custom={2} variants={item}>
-            Je m'appelle Antoine Lemlin, j'ai 23 ans et je suis développeur web
-            frontend Junior en Belgique.
+            My name is Antoine Lemlin and I'm a Junior Web Developper from
+            Belgium. Check below the technologies I know.
           </motion.p>
           <motion.ul className="list-techno" custom={3} variants={item}>
             <li>Javascript</li>
