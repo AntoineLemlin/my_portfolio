@@ -59,7 +59,7 @@ const ProjetSection = () => {
                 </div>
                 <div class="flip-card-back">
                   <h3>Netflix Clone</h3>
-                  <p>React JS</p>
+                  <p>React JS & API</p>
                   <div className="buttons-card">
                     <a
                       href="https://github.com/AntoineLemlin/netflix_clone"
@@ -90,7 +90,7 @@ const ProjetSection = () => {
                 </div>
                 <div class="flip-card-back">
                   <h3>McDonald's App</h3>
-                  <p>React JS</p>
+                  <p>React JS & Node JS</p>
                   <div className="buttons-card">
                     <a
                       href="https://github.com/AntoineLemlin/technical-test-2021-Mango3D"
