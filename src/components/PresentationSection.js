@@ -33,9 +33,11 @@ const PresentationSection = () => {
             Belgium. Check below some of the technologies I know.
           </motion.p>
           <motion.ul className="list-techno" custom={3} variants={item}>
-            <li>Javascript</li>
+            <li>Javascript / Node.JS</li>
             <li>React.JS</li>
             <li>Three.JS</li>
+            <li>Vue JS</li>
+            <li>Directus</li>
             <li>PHP</li>
           </motion.ul>
         </div>
