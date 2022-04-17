@@ -431,7 +431,7 @@ input[type="submit"]:hover {
   }
 
   .scroll {
-    display: none;
+    margin-top: -20%;
   }
 }
 

@@ -135,7 +135,7 @@ function App() {
         </Routes>
       </AnimatePresence>
 
-      {location.pathname === "/contact" ? "" : <Scroll />}
+      {location.pathname === "/" ? <Scroll /> : ""}
     </>
   );
 }
