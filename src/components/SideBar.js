@@ -31,6 +31,7 @@ const SideBar = () => {
         initial="hidden"
         animate="show"
         custom={1}
+        target="_blank"
       >
         <i className="fab fa-github"></i>
       </motion.a>
@@ -40,6 +41,7 @@ const SideBar = () => {
         initial="hidden"
         animate="show"
         custom={2}
+        target="_blank"
       >
         <i className="fab fa-linkedin-in"></i>
       </motion.a>
